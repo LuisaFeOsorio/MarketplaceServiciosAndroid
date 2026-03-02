@@ -26,7 +26,7 @@ fun HomeScreen(
     ) {
         // Carga la imagen desde res/drawable/welcome.png [6, 7]
         Image(
-            painter = painterResource(id =R.drawable.logo),
+            painter = painterResource(id =R.mipmap.logo),
             contentDescription = "ServiMarket"
         )
 
