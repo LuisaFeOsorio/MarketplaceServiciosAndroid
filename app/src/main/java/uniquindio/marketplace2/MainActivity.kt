@@ -11,7 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import uniquindio.marketplace2.ui.theme.Marketplace2Theme
+import uniquindio.marketplace2.core.theme.Marketplace2Theme
+import uniquindio.marketplace2.features.login.LoginScreen
 
 class MainActivity : ComponentActivity() {
     /*
