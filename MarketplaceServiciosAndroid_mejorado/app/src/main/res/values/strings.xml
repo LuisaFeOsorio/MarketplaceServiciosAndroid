@@ -1,0 +1,260 @@
+<resources>
+    <string name="app_name">Marketplace2</string>
+    <string name="detalle_titulo">Detalle</string>
+    <string name="login_titulo">Iniciar Sesión</string>
+    <string name="login_bienvenido">Bienvenido</string>
+    <string name="login_subtitulo">Inicia sesión para continuar</string>
+    <string name="login_email">Email</string>
+    <string name="login_contraseña">Contraseña</string>
+    <string name="login_recordarme">Recordarme</string>
+    <string name="login_olvidaste">¿Olvidaste tu contraseña?</string>
+    <string name="login_iniciar">INICIAR SESIÓN</string>
+    <string name="login_no_cuenta">¿No tienes cuenta?</string>
+    <string name="login_registrate">Regístrate</string>
+    <string name="login_email_requerido">El email es requerido</string>
+    <string name="login_password_requerido">La contraseña es requerida</string>
+    <string name="login_email_invalido">Email no válido</string>
+    <string name="login_incorrecto">Email o contraseña incorrectos</string>
+
+    <!-- ========== NOTIFICACIONES ========== -->
+    <string name="notificaciones_titulo">Notificaciones</string>
+    <string name="notificaciones_vacio">No tienes notificaciones</string>
+    <string name="notificaciones_vacio_desc">Cuando recibas notificaciones, aparecerán aquí</string>
+    <string name="notificaciones_leer_todas">Leer todas (%d)</string>
+    <string name="eliminar">Eliminar</string>
+
+    <!-- ========== HOME SCREEN ========== -->
+    <string name="home_inicio">Inicio</string>
+    <string name="home_buscar">Buscar</string>
+    <string name="home_perfil">Perfil</string>
+    <string name="home_dashboard">Dashboard</string>
+    <string name="home_mis_ofertas">Mis Ofertas</string>
+    <string name="home_dashboard_placeholder">Dashboard del trabajador - Próximamente</string>
+    <string name="home_mis_ofertas_placeholder">Mis ofertas - Próximamente</string>
+
+    <!-- ========== REGISTRO ========== -->
+    <string name="registro_titulo">Crear Cuenta</string>
+    <string name="registro_nombre">Nombre completo</string>
+    <string name="registro_telefono">Teléfono (opcional)</string>
+    <string name="registro_confirmar">Confirmar contraseña</string>
+    <string name="registro_boton">REGISTRARSE</string>
+    <string name="registro_ya_cuenta">¿Ya tienes cuenta?</string>
+    <string name="registro_tipo_usuario">Tipo de usuario</string>
+    <string name="registro_cliente">Cliente</string>
+    <string name="registro_trabajador">Trabajador</string>
+    <string name="registro_campos_obligatorios">Todos los campos son obligatorios</string>
+    <string name="registro_password_corta">La contraseña debe tener al menos 6 caracteres</string>
+    <!-- ========== PERFIL ========== -->
+
+    <string name="perfil_calificacion">⭐ %.1f • %d servicios</string>
+    <string name="perfil_foto">Foto de perfil</string>
+    <string name="editar">Editar</string>
+    <!-- ========== LISTA SOLICITUDES ========== -->
+    <string name="solicitudes_recibidas">Solicitudes Recibidas</string>
+    <string name="mis_solicitudes">Mis Solicitudes</string>
+    <string name="solicitudes_pendientes">Pendientes</string>
+    <string name="solicitudes_aceptadas">Aceptadas</string>
+    <string name="solicitudes_completadas">Completadas</string>
+    <string name="solicitudes_vacio">No hay solicitudes %s</string>
+    <string name="solicitud_estado_pendiente">Pendiente</string>
+    <string name="solicitud_estado_aceptada">Aceptada</string>
+    <string name="solicitud_estado_completada">Completada</string>
+    <string name="solicitud_para">Para: %s</string>
+    <string name="boton_aceptar">Aceptar</string>
+    <string name="boton_rechazar">Rechazar</string>
+
+    <!-- ========== PERFIL ========== -->
+    <string name="perfil_titulo">Mi Perfil</string>
+    <string name="perfil_editar">Editar Perfil</string>
+    <string name="perfil_nombre">Nombre</string>
+    <string name="perfil_email">Email</string>
+    <string name="perfil_telefono">Teléfono</string>
+    <string name="perfil_descripcion">Descripción profesional</string>
+    <string name="perfil_sin_descripcion">Sin descripción</string>
+    <string name="perfil_no_registrado">No registrado</string>
+    <string name="perfil_cerrar_sesion">CERRAR SESIÓN</string>
+    <string name="perfil_guardar">Guardar</string>
+    <string name="perfil_cancelar">Cancelar</string>
+    <string name="perfil_error_cargar">Error al cargar perfil</string>
+    <string name="perfil_nombre_vacio">El nombre no puede estar vacío</string>
+    <string name="perfil_error_actualizar">Error al actualizar perfil</string>
+    <string name="perfil_servicios">servicios</string>
+
+    <!-- ========== CREAR OFERTA ========== -->
+    <string name="crear_oferta_titulo">Publicar Servicio</string>
+    <string name="crear_oferta_publicando">Estás publicando como:</string>
+    <string name="crear_oferta_titulo_label">Título del servicio</string>
+    <string name="crear_oferta_titulo_placeholder">Ej: Reparación de fugas 24/7</string>
+    <string name="crear_oferta_categoria">Categoría</string>
+    <string name="crear_oferta_descripcion">Descripción</string>
+    <string name="crear_oferta_descripcion_placeholder">Describe tu servicio en detalle...</string>
+    <string name="crear_oferta_precio_min">Precio mínimo</string>
+    <string name="crear_oferta_precio_max">Precio máximo</string>
+    <string name="crear_oferta_rango">Define un rango de precios estimado</string>
+    <string name="crear_oferta_publicar">PUBLICAR SERVICIO</string>
+    <string name="crear_oferta_titulo_obligatorio">El título es obligatorio</string>
+    <string name="crear_oferta_descripcion_obligatoria">La descripción es obligatoria</string>
+    <string name="crear_oferta_descripcion_corta">La descripción debe tener al menos 10 caracteres</string>
+    <string name="crear_oferta_precio_obligatorio">El precio es obligatorio</string>
+    <string name="crear_oferta_precio_mayor">El precio máximo debe ser mayor al mínimo</string>
+
+    <!-- ========== MODERADOR ========== -->
+    <string name="moderador_panel_titulo">Panel de Moderación</string>
+    <string name="moderador_sin_pendientes">No hay ofertas pendientes</string>
+    <string name="moderador_todas_revisadas">Todas las ofertas han sido revisadas</string>
+    <string name="moderador_accion_exitosa">✅ Acción realizada correctamente</string>
+    <string name="moderador_revisar_oferta">Revisar oferta</string>
+    <string name="moderador_descripcion_original">Descripción original:</string>
+    <string name="moderador_analisis_ia">🤖 Análisis IA:</string>
+    <string name="moderador_palabras_detectadas">Palabras detectadas:</string>
+    <string name="moderador_confianza">Confianza:</string>
+    <string name="moderador_version_sugerida">Versión sugerida:</string>
+    <string name="moderador_motivo_rechazo_titulo">Motivo de rechazo</string>
+    <string name="moderador_motivo_rechazo_hint">Explica al proveedor por qué se rechaza su oferta:</string>
+    <string name="moderador_motivo_placeholder">Ej: Descripción incompleta, lenguaje inapropiado…</string>
+    <string name="moderador_aprobar">Aprobar</string>
+    <string name="moderador_rechazar">Rechazar</string>
+    <string name="moderador_cancelar">Cancelar</string>
+
+    <!-- ========== MENSAJES COMUNES ========== -->
+    <string name="volver">Volver</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="error_general">Ocurrió un error</string>
+    <string name="cargando">Cargando...</string>
+
+    <!-- ========== DETALLE OFERTA ========== -->
+    <string name="detalle_rango_estimado">Rango estimado</string>
+    <string name="detalle_descripcion">Descripción</string>
+    <string name="detalle_distancia">A %.1f km de tu ubicación</string>
+    <string name="detalle_solicitar">SOLICITAR SERVICIO</string>
+    <string name="detalle_oferta_no_encontrada">Oferta no encontrada</string>
+    <string name="detalle_imagen_servicio">Imagen del servicio</string>
+    <!-- ========== SOLICITAR SERVICIO ========== -->
+    <string name="solicitar_titulo">Solicitar Servicio</string>
+    <string name="solicitar_mensaje">Mensaje para el proveedor</string>
+    <string name="solicitar_placeholder">Describe tu necesidad...</string>
+    <string name="solicitar_fecha">Fecha preferida</string>
+    <string name="solicitar_fecha_placeholder">Selecciona una fecha</string>
+    <string name="solicitar_enviar">ENVIAR SOLICITUD</string>
+    <string name="solicitar_oferta_no_encontrada">Oferta no encontrada</string>
+    <string name="solicitar_fecha_selector_titulo">Selecciona una fecha</string>
+    <string name="solicitar_fecha_anio">Año</string>
+    <string name="solicitar_fecha_mes">Mes</string>
+    <string name="solicitar_fecha_dia">Día</string>
+
+    <!-- ========== CATEGORÍAS ========== -->
+    <string name="categoria_hogar">Hogar</string>
+    <string name="categoria_educacion">Educación</string>
+    <string name="categoria_mascotas">Mascotas</string>
+    <string name="categoria_tecnologia">Tecnología</string>
+    <string name="categoria_transporte">Transporte</string>
+
+    <!-- ========== TEXTO ADICIONAL PARA LOGIN ========== -->
+    <string name="ocultar">Ocultar</string>
+    <string name="mostrar">Mostrar</string>
+    <string name="cuentas_prueba">Cuentas de prueba:</string>
+    <string name="cliente">Cliente</string>
+    <string name="trabajador">Trabajador</string>
+    <string name="moderador">Moderador</string>
+
+    <!-- ========== OLVIDAR CONTRASEÑA ========== -->
+    <string name="olvidar_titulo">Olvidé mi contraseña</string>
+    <string name="olvidar_email">Correo electrónico</string>
+    <string name="olvidar_enviar">Enviar enlace</string>
+
+    <!-- ========== RECUPERAR CONTRASEÑA ========== -->
+    <string name="recuperar_titulo">Recuperar contraseña</string>
+    <string name="recuperar_email">Correo electrónico</string>
+    <string name="recuperar_enviar">Enviar enlace</string>
+
+    <!-- ========== FEED MAPA ========== -->
+    <string name="feed_mapa_titulo">Servicios cerca de ti</string>
+    <string name="feed_mi_ubicacion">Mi ubicación</string>
+    <string name="feed_ubicacion_actual">Ubicación actual: %s</string>
+    <string name="feed_ofertas_disponibles">Ofertas disponibles: %d</string>
+    <string name="feed_km">km</string>
+    <string name="feed_ver_detalle">Ver detalle</string>
+
+    <!-- ========== FEED LISTA ========== -->
+    <string name="feed_titulo">Servicios cercanos</string>
+    <string name="feed_categoria_todos">Todos</string>
+    <string name="feed_categoria_hogar">Hogar</string>
+    <string name="feed_categoria_educacion">Educación</string>
+    <string name="feed_categoria_mascotas">Mascotas</string>
+    <string name="feed_categoria_tecnologia">Tecnología</string>
+    <string name="feed_categoria_transporte">Transporte</string>
+    <string name="feed_vacio">No hay servicios disponibles en esta categoría</string>
+    <string name="feed_imagen_servicio">Imagen del servicio</string>
+    <string name="feed_precio_formato">$%.0f - $%.0f</string>
+    <string name="feed_distancia_formato">📍 %.1f km</string>
+    <string name="feed_calificacion_formato">⭐ %.1f</string>
+
+
+    <!-- ========== DASHBOARD ========== -->
+    <string name="dashboard_titulo">Mi Dashboard</string>
+    <string name="dashboard_bienvenido">¡Bienvenido de vuelta!</string>
+    <string name="dashboard_ingresos">Ingresos</string>
+    <string name="dashboard_servicios_mes">Servicios</string>
+    <string name="dashboard_pendientes">Pendientes</string>
+    <string name="dashboard_en_curso">En Curso</string>
+    <string name="dashboard_resumen_mes">Resumen del mes</string>
+    <string name="dashboard_acciones_rapidas">Acciones rápidas</string>
+    <string name="dashboard_nueva_oferta">Nueva Oferta</string>
+    <string name="dashboard_solicitudes">Solicitudes</string>
+    <string name="dashboard_notificaciones">Notificaciones</string>
+    <string name="dashboard_solicitudes_recientes">Solicitudes recientes</string>
+    <string name="dashboard_ver_todas">Ver todas</string>
+    <string name="dashboard_servicios_activos">Mis servicios activos</string>
+    <string name="dashboard_sin_servicios">Aún no tienes servicios publicados</string>
+    <string name="dashboard_publicar_primero">Publicar mi primer servicio</string>
+    <string name="dashboard_resenas">reseñas</string>
+
+    <!-- ========== MIS OFERTAS ========== -->
+    <string name="mis_ofertas_titulo">Mis Servicios</string>
+    <string name="mis_ofertas_activas">Activas</string>
+    <string name="mis_ofertas_inactivas">Inactivas</string>
+    <string name="mis_ofertas_revision">En revisión</string>
+    <string name="mis_ofertas_crear">Crear nueva oferta</string>
+    <string name="mis_ofertas_vacio">No tienes ofertas %s</string>
+
+    <!-- ========== FEED MEJORADO ========== -->
+    <string name="feed_buscar">Buscar servicios…</string>
+    <string name="feed_resultados">%d resultado(s) para "%s"</string>
+    <string name="feed_no_resultados">No hay servicios disponibles</string>
+    <string name="feed_precio_estimado">Precio estimado</string>
+
+    <!-- ========== DETALLE SOLICITUD ========== -->
+    <string name="detalle_solicitud_titulo">Detalle de Solicitud</string>
+    <string name="detalle_solicitud_servicio">Servicio</string>
+    <string name="detalle_solicitud_cliente">Cliente</string>
+    <string name="detalle_solicitud_fecha">Fecha solicitada</string>
+    <string name="detalle_solicitud_mensaje">Mensaje</string>
+    <string name="detalle_solicitud_estado">Estado</string>
+    <string name="detalle_solicitud_aceptar">Aceptar solicitud</string>
+    <string name="detalle_solicitud_rechazar">Rechazar solicitud</string>
+    <string name="detalle_solicitud_completar">Marcar como completada</string>
+    <string name="detalle_solicitud_volver">Volver</string>
+
+    <!-- ========== DETALLE OFERTA EXTRA ========== -->
+    <string name="detalle_proveedor">Proveedor</string>
+    <string name="detalle_etiquetas">Etiquetas</string>
+    <string name="detalle_resenas">Reseñas</string>
+    <string name="detalle_sin_resenas">Aún no hay reseñas para este servicio.</string>
+
+
+    <!-- ========== EXTRAS ========== -->
+    <string name="detalle_solicitud_acciones">Acciones</string>
+    <string name="feed_todos">Todos</string>
+
+
+    <!-- ========== BOTTOM NAV ========== -->
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_mis_ofertas">Mis Ofertas</string>
+    <string name="nav_solicitudes">Solicitudes</string>
+    <string name="nav_perfil">Perfil</string>
+    <string name="nav_panel">Panel</string>
+    <string name="nav_feed">Feed</string>
+    <string name="nav_explorar">Explorar</string>
+
+</resources>
