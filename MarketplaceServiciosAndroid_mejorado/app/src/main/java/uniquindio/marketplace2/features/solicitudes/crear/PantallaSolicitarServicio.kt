@@ -17,9 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import uniquindio.marketplace2.R
-import uniquindio.marketplace2.data.model.OfertasMock
+import uniquindio.marketplace2.data.modelos.OfertasMock
 import uniquindio.marketplace2.features.solicitudes.SolicitudViewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)

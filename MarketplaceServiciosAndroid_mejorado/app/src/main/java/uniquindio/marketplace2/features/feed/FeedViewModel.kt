@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import uniquindio.marketplace2.data.model.Oferta
+import uniquindio.marketplace2.data.modelos.Oferta
 import uniquindio.marketplace2.data.repositorios.RepositorioOfertas  // ✅ IMPORT AGREGADO
 import javax.inject.Inject
 

@@ -2,58 +2,64 @@ package uniquindio.marketplace2.core.navegacion
 
 
 
-// ========== PANTALLAS DE AUTENTICACIÓN ==========
+// ── Autenticación ──────────────────────────────────────────
 @kotlinx.serialization.Serializable
 object Login
 
 @kotlinx.serialization.Serializable
 object Registro
+
 @kotlinx.serialization.Serializable
 object Feed
 
-// ========== PANTALLA PRINCIPAL ==========
+// ── Principal ─────────────────────────────────────────────
 @kotlinx.serialization.Serializable
 data class Home(val rol: String)
 
-// ========== PANTALLAS DE OFERTAS ==========
+// ── Ofertas ───────────────────────────────────────────────
 @kotlinx.serialization.Serializable
 data class DetalleOferta(val ofertaId: String)
 
 @kotlinx.serialization.Serializable
 object CrearOferta
 
-// ========== PANTALLAS DE SOLICITUDES ==========
+@kotlinx.serialization.Serializable
+data class EditarOferta(val ofertaId: String)
+
+// ── Solicitudes ───────────────────────────────────────────
 @kotlinx.serialization.Serializable
 data class SolicitarServicio(val ofertaId: String)
+
 @kotlinx.serialization.Serializable
 object Solicitudes
 
 @kotlinx.serialization.Serializable
 data class DetalleSolicitud(val solicitudId: String)
 
-// ========== PANTALLAS DE PERFIL ==========
+// ── Perfil ────────────────────────────────────────────────
 @kotlinx.serialization.Serializable
 object Perfil
 
-// ========== PANTALLAS DE FEED ==========
+// ── Feed / Búsqueda ───────────────────────────────────────
 @kotlinx.serialization.Serializable
 object Buscar
 
-// ========== PANTALLAS DE TRABAJADOR ==========
+// ── Trabajador ────────────────────────────────────────────
 @kotlinx.serialization.Serializable
 object Dashboard
 
 @kotlinx.serialization.Serializable
 object MisOfertas
 
-// ========== PANTALLAS DE NOTIFICACIONES ==========
+// ── Notificaciones ────────────────────────────────────────
 @kotlinx.serialization.Serializable
 object Notificaciones
 
-// ========== PANTALLAS DE MODERADOR ==========
+// ── Moderador ─────────────────────────────────────────────
 @kotlinx.serialization.Serializable
 object PanelModerador
-// ========== PANTALLAS DE RECUPERAR CONTRASEÑA ==========
+
+// ── Recuperar contraseña ──────────────────────────────────
 @kotlinx.serialization.Serializable
 object OlvidarContrasena
 

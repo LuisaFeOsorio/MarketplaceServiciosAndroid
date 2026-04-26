@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import uniquindio.marketplace2.R
-import uniquindio.marketplace2.data.model.OfertasMock
+import uniquindio.marketplace2.data.modelos.OfertasMock
 import uniquindio.marketplace2.data.modelos.SolicitudMock
 import uniquindio.marketplace2.data.modelos.UsuariosMock
 

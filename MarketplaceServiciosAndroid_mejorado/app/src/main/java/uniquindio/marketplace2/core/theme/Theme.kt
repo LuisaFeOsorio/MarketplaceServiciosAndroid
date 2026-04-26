@@ -64,7 +64,7 @@ private val DarkColorScheme = darkColorScheme(
 
 @Composable
 fun MarketplaceTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = false,
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {

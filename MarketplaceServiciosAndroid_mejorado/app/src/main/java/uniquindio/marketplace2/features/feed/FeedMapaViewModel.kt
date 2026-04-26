@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import uniquindio.marketplace2.data.model.Oferta
-import uniquindio.marketplace2.data.model.OfertasMock
+import uniquindio.marketplace2.data.modelos.Oferta
+import uniquindio.marketplace2.data.modelos.OfertasMock
 import javax.inject.Inject
 
 @HiltViewModel

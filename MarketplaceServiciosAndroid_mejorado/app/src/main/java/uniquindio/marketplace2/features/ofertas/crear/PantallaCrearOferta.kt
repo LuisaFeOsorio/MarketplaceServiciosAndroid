@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import uniquindio.marketplace2.R
-import uniquindio.marketplace2.data.model.Oferta
+import uniquindio.marketplace2.data.modelos.Oferta
 import uniquindio.marketplace2.data.modelos.Usuario
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import uniquindio.marketplace2.core.datastore.SessionManager
-import uniquindio.marketplace2.data.model.OfertasMock
+import uniquindio.marketplace2.data.modelos.OfertasMock
 import uniquindio.marketplace2.data.modelos.Solicitud
 import uniquindio.marketplace2.data.repositorios.RepositorioSolicitudes  // ✅ IMPORT AGREGADO
 import javax.inject.Inject

@@ -1,0 +1,5 @@
+Botón "Es importante / Me interesa" (votos)		No existe en ninguna pantalla. Falta campo votos en Oferta y botón en PantallaDetalleOferta
+Comentarios en publicaciones		PantallaDetalleOferta solo muestra reseñas mockeadas, sin campo para agregar comentario
+Editar publicaciones propias		PantallaMisOfertas muestra las ofertas pero no tiene botón "Editar"
+Borrar publicaciones propias	No hay acción de eliminar oferta en ninguna pantalla
+Sistema de reputación y puntos	No existe campo puntos en Usuario ni lógica de acumulación

@@ -2,15 +2,20 @@ package uniquindio.marketplace2.data.repositorios
 
 import javax.inject.Inject
 import javax.inject.Singleton
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
-import uniquindio.marketplace2.data.model.Oferta
-import uniquindio.marketplace2.data.model.OfertasMock
+import uniquindio.marketplace2.data.modelos.Comentario
+import uniquindio.marketplace2.data.modelos.Oferta
+import uniquindio.marketplace2.data.modelos.OfertasMock
 
 @Singleton
-class RepositorioOfertas @Inject constructor() {
+class RepositorioOfertas @Inject constructor(
+    private val repositorioUsuarios: RepositorioUsuarios
+) {
 
-    // Lista mutable en memoria (simula base de datos)
-    private val ofertas = OfertasMock.lista.toMutableList()
+    private val ofertas = OfertasMock.lista
 
     fun obtenerTodas(): List<Oferta> = ofertas.toList()
 
@@ -31,6 +36,7 @@ class RepositorioOfertas @Inject constructor() {
             estado = "pendiente"
         )
         ofertas.add(nueva)
+        repositorioUsuarios.acumularPuntos(oferta.proveedorId, uniquindio.marketplace2.data.modelos.ReglaPuntos.POR_OFERTA_CREADA)
         return nueva
     }
 
@@ -50,15 +56,81 @@ class RepositorioOfertas @Inject constructor() {
         } else false
     }
 
-    fun eliminar(id: String): Boolean {
-        return ofertas.removeIf { it.id == id }
-    }
+    fun eliminar(id: String): Boolean = ofertas.removeIf { it.id == id }
 
     fun buscar(query: String): List<Oferta> =
         ofertas.filter { oferta ->
             oferta.titulo.contains(query, ignoreCase = true) ||
-            oferta.descripcion.contains(query, ignoreCase = true) ||
-            oferta.categoria.contains(query, ignoreCase = true) ||
-            oferta.proveedorNombre.contains(query, ignoreCase = true)
+                    oferta.descripcion.contains(query, ignoreCase = true) ||
+                    oferta.categoria.contains(query, ignoreCase = true) ||
+                    oferta.proveedorNombre.contains(query, ignoreCase = true)
         }
+
+    fun votar(ofertaId: String, usuarioId: String): Boolean {
+        val index = ofertas.indexOfFirst { it.id == ofertaId }
+        if (index < 0) return false
+        val oferta = ofertas[index]
+        if (usuarioId in oferta.usuariosQueVotaron) return false
+
+        ofertas[index] = oferta.copy(
+            votos = oferta.votos + 1,
+            usuariosQueVotaron = oferta.usuariosQueVotaron + usuarioId
+        )
+
+        repositorioUsuarios.acumularPuntos(oferta.proveedorId, uniquindio.marketplace2.data.modelos.ReglaPuntos.POR_VOTO_RECIBIDO)
+        return true
+    }
+
+    /**
+     * Quita el voto de [usuarioId] en la oferta [ofertaId].
+     * Retorna true si se quitó, false si el usuario no había votado.
+     */
+    fun quitarVoto(ofertaId: String, usuarioId: String): Boolean {
+        val index = ofertas.indexOfFirst { it.id == ofertaId }
+        if (index < 0) return false
+        val oferta = ofertas[index]
+        if (usuarioId !in oferta.usuariosQueVotaron) return false
+
+        ofertas[index] = oferta.copy(
+            votos = (oferta.votos - 1).coerceAtLeast(0),
+            usuariosQueVotaron = oferta.usuariosQueVotaron - usuarioId
+        )
+        return true
+    }
+
+    /** Indica si [usuarioId] ya votó la oferta [ofertaId]. */
+    fun haVotado(ofertaId: String, usuarioId: String): Boolean =
+        ofertas.find { it.id == ofertaId }?.usuariosQueVotaron?.contains(usuarioId) == true
+
+    // ── NUEVO: Comentarios ────────────────────────────────────
+    /**
+     * Agrega un comentario de texto a la oferta [ofertaId].
+     * Retorna el Comentario creado o null si la oferta no existe.
+     */
+    fun agregarComentario(
+        ofertaId: String,
+        autorId: String,
+        autorNombre: String,
+        texto: String
+    ): Comentario? {
+        val index = ofertas.indexOfFirst { it.id == ofertaId }
+        if (index < 0) return null
+
+        val nuevo = Comentario(
+            id    = "cmt_${System.currentTimeMillis()}",
+            autorId = autorId,
+            autorNombre = autorNombre,
+            texto = texto,
+            fecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
+        )
+        val oferta = ofertas[index]
+        ofertas[index] = oferta.copy(comentarios = oferta.comentarios + nuevo)
+
+        // El autor gana puntos por comentar
+        repositorioUsuarios.acumularPuntos(autorId, uniquindio.marketplace2.data.modelos.ReglaPuntos.POR_COMENTARIO_PUBLICADO)
+        return nuevo
+    }
+
+    fun obtenerComentarios(ofertaId: String): List<Comentario> =
+        ofertas.find { it.id == ofertaId }?.comentarios ?: emptyList()
 }
