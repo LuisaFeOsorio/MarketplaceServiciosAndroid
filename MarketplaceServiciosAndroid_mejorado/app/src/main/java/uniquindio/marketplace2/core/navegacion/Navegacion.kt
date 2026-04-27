@@ -22,6 +22,7 @@ import uniquindio.marketplace2.features.auth.olvidar_contrasenia.OlvidarContrase
 import uniquindio.marketplace2.features.auth.recuperar_contrasenia.RecuperarContrasenaScreen
 import uniquindio.marketplace2.features.auth.registro.PantallaRegistro
 import uniquindio.marketplace2.features.home.HomeScreen
+import uniquindio.marketplace2.features.mensajes.PantallaMensajes
 
 
 @Composable
@@ -86,8 +87,6 @@ fun ConfiguracionNavegacion(
             )
         }
 
-
-
         composable<Home> { backStackEntry ->
             val home = backStackEntry.toRoute<Home>()
             HomeScreen(
@@ -114,6 +113,16 @@ fun ConfiguracionNavegacion(
                         popUpTo(Login) { inclusive = true }
                     }
                 }
+            )
+        }
+
+        // ===== NUEVA RUTA: MENSAJES =====
+        composable<Mensajes> { backStackEntry ->
+            val route = backStackEntry.toRoute<Mensajes>()
+            PantallaMensajes(
+                solicitudId = route.solicitudId,
+                tituloServicio = route.tituloServicio,
+                onBackPressed = { navController.popBackStack() }
             )
         }
     }

@@ -20,13 +20,14 @@ import androidx.navigation.compose.rememberNavController
 import uniquindio.marketplace2.R
 import uniquindio.marketplace2.core.navegacion.*
 import uniquindio.marketplace2.data.modelos.Usuario
-import uniquindio.marketplace2.data.repositorios.RepositorioOfertas
 import uniquindio.marketplace2.features.dashboard.PantallaDashboard
 import uniquindio.marketplace2.features.feed.PantallaFeedLista
 import uniquindio.marketplace2.features.feed.PantallaFeedMapa
-import uniquindio.marketplace2.features.misOfertas.PantallaEditarOferta   // NUEVO
+import uniquindio.marketplace2.features.mensajes.PantallaMensajes
 import uniquindio.marketplace2.features.misOfertas.PantallaMisOfertas
+import uniquindio.marketplace2.features.misOfertas.PantallaEditarOferta
 import uniquindio.marketplace2.features.moderador.PantallaPanelModerador
+import uniquindio.marketplace2.features.moderador.PantallaHistorialModerador
 import uniquindio.marketplace2.features.notificaciones.PantallaNotificaciones
 import uniquindio.marketplace2.features.ofertas.crear.PantallaCrearOferta
 import uniquindio.marketplace2.features.ofertas.detalle.PantallaDetalleOferta
@@ -34,7 +35,6 @@ import uniquindio.marketplace2.features.perfil.PantallaPerfil
 import uniquindio.marketplace2.features.solicitudes.crear.PantallaSolicitarServicio
 import uniquindio.marketplace2.features.solicitudes.detalle.PantallaDetalleSolicitud
 import uniquindio.marketplace2.features.solicitudes.lista.PantallaListaSolicitudes
-import javax.inject.Inject
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,7 +63,7 @@ fun HomeScreen(
         )
         "moderador" -> listOf(
             NavItem(stringResource(R.string.nav_panel), Icons.Default.AdminPanelSettings, PanelModerador),
-            NavItem(stringResource(R.string.nav_feed), Icons.Default.Home, Feed),
+            NavItem("Historial", Icons.Default.History, HistorialModerador),
             NavItem(stringResource(R.string.nav_perfil), Icons.Default.Person, Perfil)
         )
         else -> listOf(
@@ -99,12 +99,7 @@ fun HomeScreen(
                             }
                         },
                         icon = { Icon(item.icon, contentDescription = item.label) },
-                        label = {
-                            Text(
-                                item.label,
-                                fontWeight = if (isSelected(item.dest)) FontWeight.Bold else FontWeight.Normal
-                            )
-                        }
+                        label = { Text(item.label, fontWeight = if (isSelected(item.dest)) FontWeight.Bold else FontWeight.Normal) }
                     )
                 }
             }
@@ -115,31 +110,24 @@ fun HomeScreen(
             startDestination = startDest,
             modifier = Modifier.padding(paddingValues)
         ) {
-
-            // ─── COMPARTIDO ──────────────────────────────────────────────
+            // ─── COMPARTIDO ───
             composable<Feed> {
                 PantallaFeedLista(
                     onOfertaClick = { navController.navigate(DetalleOferta(it)) }
                 )
             }
-
             composable<Buscar> {
-                PantallaFeedMapa(
-                    onOfertaClick = { navController.navigate(DetalleOferta(it)) }
-                )
+                PantallaFeedMapa(onOfertaClick = { navController.navigate(DetalleOferta(it)) })
             }
-
             composable<Perfil> {
                 PantallaPerfil(
                     onBackPressed = { navController.popBackStack() },
                     onCerrarSesion = onNavigateToLogin
                 )
             }
-
             composable<Notificaciones> {
                 PantallaNotificaciones(onBackPressed = { navController.popBackStack() })
             }
-
             composable<DetalleOferta> { back ->
                 val r = back.toRoute<DetalleOferta>()
                 PantallaDetalleOferta(
@@ -148,7 +136,6 @@ fun HomeScreen(
                     onSolicitarClick = { navController.navigate(SolicitarServicio(it)) }
                 )
             }
-
             composable<SolicitarServicio> { back ->
                 val r = back.toRoute<SolicitarServicio>()
                 PantallaSolicitarServicio(
@@ -158,12 +145,16 @@ fun HomeScreen(
                 )
             }
 
+            // ─── DETALLE SOLICITUD con navegación a Mensajes ───
             composable<DetalleSolicitud> { back ->
                 val r = back.toRoute<DetalleSolicitud>()
                 PantallaDetalleSolicitud(
                     solicitudId = r.solicitudId,
                     rolUsuario = rolUsuario,
-                    onBackPressed = { navController.popBackStack() }
+                    onBackPressed = { navController.popBackStack() },
+                    onNavigateToMensajes = { solicitudId, tituloServicio ->
+                        navController.navigate(Mensajes(solicitudId, tituloServicio))
+                    }
                 )
             }
 
@@ -173,6 +164,16 @@ fun HomeScreen(
                     onSolicitudClick = { navController.navigate(DetalleSolicitud(it)) },
                     onAceptarSolicitud = {},
                     onRechazarSolicitud = {}
+                )
+            }
+
+            // ─── MENSAJES ───
+            composable<Mensajes> { back ->
+                val r = back.toRoute<Mensajes>()
+                PantallaMensajes(
+                    solicitudId = r.solicitudId,
+                    tituloServicio = r.tituloServicio,
+                    onBackPressed = { navController.popBackStack() }
                 )
             }
 
@@ -190,7 +191,7 @@ fun HomeScreen(
                 }
             }
 
-            // ─── TRABAJADOR ──────────────────────────────────────────────
+            // ─── TRABAJADOR ───
             composable<Dashboard> {
                 PantallaDashboard(
                     onCrearOfertaClick = { navController.navigate(CrearOferta) },
@@ -199,42 +200,30 @@ fun HomeScreen(
                     onOfertaClick = { navController.navigate(DetalleOferta(it)) }
                 )
             }
-
-            // ── CAMBIO: PantallaMisOfertas ahora recibe onEditarOfertaClick
-            //           y onEliminarOferta además de los callbacks originales
             composable<MisOfertas> {
                 PantallaMisOfertas(
                     onCrearOfertaClick = { navController.navigate(CrearOferta) },
                     onOfertaClick = { navController.navigate(DetalleOferta(it)) },
-                    onEditarOfertaClick = { ofertaId ->          // NUEVO
-                        navController.navigate(EditarOferta(ofertaId))
-                    },
-                    onEliminarOferta = { /* RepositorioOfertas.eliminar ya se llama
-                                           dentro de PantallaMisOfertas via estado local;
-                                           aquí puedes añadir lógica adicional si usas VM */ }
+                    onEditarOfertaClick = { navController.navigate(EditarOferta(it)) }
                 )
             }
-
-            // ── NUEVO: ruta para editar una oferta existente
             composable<EditarOferta> { back ->
                 val r = back.toRoute<EditarOferta>()
-
-                // PantallaEditarOferta necesita el repositorio para leer/guardar.
-                // Como es una pantalla sencilla sin ViewModel propio, lo obtenemos
-                // desde el entry-point de Hilt a través del ViewModel de Home,
-                // o bien creamos un ViewModel dedicado.
-                // Por ahora usamos la forma más directa compatible con lo que ya tienes:
-                val editVM: EditarOfertaViewModel = hiltViewModel()
-
+                val vm: EditarOfertaViewModel = hiltViewModel()
                 PantallaEditarOferta(
                     ofertaId = r.ofertaId,
-                    repositorioOfertas = editVM.repositorioOfertas,
+                    repositorioOfertas = vm.repositorioOfertas,
                     onBackPressed = { navController.popBackStack() },
                     onOfertaActualizada = { navController.popBackStack() }
                 )
             }
+
+            // ─── MODERADOR ───
             composable<PanelModerador> {
                 PantallaPanelModerador(onBackPressed = { navController.popBackStack() })
+            }
+            composable<HistorialModerador> {
+                PantallaHistorialModerador()
             }
         }
     }

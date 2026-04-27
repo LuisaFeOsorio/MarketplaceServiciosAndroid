@@ -26,6 +26,7 @@ fun PantallaDetalleSolicitud(
     solicitudId: String,
     rolUsuario: String,
     onBackPressed: () -> Unit,
+    onNavigateToMensajes: (solicitudId: String, tituloServicio: String) -> Unit = { _, _ -> },
     viewModel: SolicitudViewModel = hiltViewModel()
 ) {
 
@@ -77,18 +78,16 @@ fun PantallaDetalleSolicitud(
         }
 
         val (estadoColor, estadoLabel) = when (solicitud.estado) {
-            "pendiente" -> Pair(Color(0xFFD97706), "Pendiente")
-            "aceptada"  -> Pair(Color(0xFF16A34A), "Aceptada")
-            "completada"-> Pair(Color(0xFF2563EB), "Completada")
-            "rechazada" -> Pair(Color(0xFFDC2626), "Rechazada")
-            else        -> Pair(Color(0xFF6B7280), solicitud.estado)
+            "pendiente"  -> Pair(Color(0xFFD97706), "Pendiente")
+            "aceptada"   -> Pair(Color(0xFF16A34A), "Aceptada")
+            "completada" -> Pair(Color(0xFF2563EB), "Completada")
+            else         -> Pair(Color(0xFFDC2626), "Rechazada")
         }
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .background(MaterialTheme.colorScheme.background)
                 .verticalScroll(rememberScrollState())
         ) {
             // Estado banner
@@ -101,10 +100,10 @@ fun PantallaDetalleSolicitud(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         when (solicitud.estado) {
-                            "pendiente" -> Icons.Default.Schedule
-                            "aceptada"  -> Icons.Default.CheckCircle
-                            "completada"-> Icons.Default.CheckCircle
-                            else        -> Icons.Default.Cancel
+                            "pendiente"  -> Icons.Default.Schedule
+                            "aceptada"   -> Icons.Default.CheckCircle
+                            "completada" -> Icons.Default.CheckCircle
+                            else         -> Icons.Default.Cancel
                         },
                         null, tint = estadoColor, modifier = Modifier.size(20.dp)
                     )
@@ -129,7 +128,7 @@ fun PantallaDetalleSolicitud(
 
                 Spacer(Modifier.height(16.dp))
 
-                // Mensaje
+                // Mensaje inicial
                 Text(stringResource(R.string.detalle_solicitud_mensaje), fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 Spacer(Modifier.height(8.dp))
                 Card(
@@ -142,6 +141,29 @@ fun PantallaDetalleSolicitud(
                         fontSize = 14.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+                }
+
+                // ===== BOTÓN DE MENSAJES (siempre visible si la solicitud no está rechazada) =====
+                if (solicitud.estado != "rechazada") {
+                    Spacer(Modifier.height(20.dp))
+                    OutlinedButton(
+                        onClick = {
+                            onNavigateToMensajes(solicitud.id, solicitud.ofertaTitulo)
+                        },
+                        modifier = Modifier.fillMaxWidth().height(52.dp),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            contentColor = MaterialTheme.colorScheme.primary
+                        )
+                    ) {
+                        Icon(Icons.Default.Chat, null, modifier = Modifier.size(20.dp))
+                        Spacer(Modifier.width(8.dp))
+                        Text(
+                            text = "Ver mensajes",
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 15.sp
+                        )
+                    }
                 }
 
                 // Acciones según rol y estado
